@@ -30,7 +30,7 @@ version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
 bindir     = "/Users/cressylamming/Documents/GitHub/Accessing-GitHub-API-Project/.stack-work/install/x86_64-osx/ab61aad26b1e9b02f1f10323fc430a79166e5318f8cfc2f272fbe8ef9bd607d4/8.8.4/bin"
-libdir     = "/Users/cressylamming/Documents/GitHub/Accessing-GitHub-API-Project/.stack-work/install/x86_64-osx/ab61aad26b1e9b02f1f10323fc430a79166e5318f8cfc2f272fbe8ef9bd607d4/8.8.4/lib/x86_64-osx-ghc-8.8.4/github-get-0.1.0.0-JD5zNHvgm374e0TcdPit6f"
+libdir     = "/Users/cressylamming/Documents/GitHub/Accessing-GitHub-API-Project/.stack-work/install/x86_64-osx/ab61aad26b1e9b02f1f10323fc430a79166e5318f8cfc2f272fbe8ef9bd607d4/8.8.4/lib/x86_64-osx-ghc-8.8.4/github-get-0.1.0.0-5jIyNqiBsKOFCFmcYMq818"
 dynlibdir  = "/Users/cressylamming/Documents/GitHub/Accessing-GitHub-API-Project/.stack-work/install/x86_64-osx/ab61aad26b1e9b02f1f10323fc430a79166e5318f8cfc2f272fbe8ef9bd607d4/8.8.4/lib/x86_64-osx-ghc-8.8.4"
 datadir    = "/Users/cressylamming/Documents/GitHub/Accessing-GitHub-API-Project/.stack-work/install/x86_64-osx/ab61aad26b1e9b02f1f10323fc430a79166e5318f8cfc2f272fbe8ef9bd607d4/8.8.4/share/x86_64-osx-ghc-8.8.4/github-get-0.1.0.0"
 libexecdir = "/Users/cressylamming/Documents/GitHub/Accessing-GitHub-API-Project/.stack-work/install/x86_64-osx/ab61aad26b1e9b02f1f10323fc430a79166e5318f8cfc2f272fbe8ef9bd607d4/8.8.4/libexec/x86_64-osx-ghc-8.8.4/github-get-0.1.0.0"

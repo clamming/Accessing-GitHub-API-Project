@@ -16,27 +16,27 @@ module Lib
 
 import qualified GitHub as GH
 import qualified Servant.Client               as SC
-import           Network.HTTP.Client          (defaultManagerSettings,
-                                               newManager)
-                 
+import           Network.HTTP.Client          (newManager)
+import           Network.HTTP.Client.TLS      (tlsManagerSettings)
+
 someFunc :: IO ()
 someFunc = do
-  putStrLn "Let's try a GitHubCall"
+  putStrLn "GitHub Call"
   testGitHubCall
-  putStrLn "end."
+  putStrLn "finish."
 
 
 testGitHubCall :: IO ()
 testGitHubCall = 
-  (SC.runClientM GH.test =<< env) >>= \case
+  (SC.runClientM (GH.test (Just "haskell-app") "clamming") =<< env) >>= \case
 
     Left err -> do
-      putStrLn $ "the problem is: " ++ show err
+      putStrLn $ "Error explanation: " ++ show err
     Right res -> do
-      putStrLn $ "github response: " ++ show res
+      putStrLn $ "GitHub result: " ++ show res
       
 
   where env :: IO SC.ClientEnv
         env = do
-          manager <- newManager defaultManagerSettings
+          manager <- newManager tlsManagerSettings
           return $ SC.mkClientEnv manager (SC.BaseUrl SC.Http "api.github.com" 80 "")

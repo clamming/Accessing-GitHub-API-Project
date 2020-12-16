@@ -44,6 +44,17 @@
   (major1) == 0 && (major2) == 6 && (minor) <= 4)
 #endif /* MIN_VERSION_http_client */
 
+/* package http-client-tls-0.3.5.3 */
+#ifndef VERSION_http_client_tls
+#define VERSION_http_client_tls "0.3.5.3"
+#endif /* VERSION_http_client_tls */
+#ifndef MIN_VERSION_http_client_tls
+#define MIN_VERSION_http_client_tls(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  3 || \
+  (major1) == 0 && (major2) == 3 && (minor) <= 5)
+#endif /* MIN_VERSION_http_client_tls */
+
 /* package servant-0.16.2 */
 #ifndef VERSION_servant
 #define VERSION_servant "0.16.2"
@@ -155,10 +166,10 @@
 #endif /* MIN_TOOL_VERSION_runghc */
 
 #ifndef CURRENT_PACKAGE_KEY
-#define CURRENT_PACKAGE_KEY "github-get-0.1.0.0-JD5zNHvgm374e0TcdPit6f"
+#define CURRENT_PACKAGE_KEY "github-get-0.1.0.0-5jIyNqiBsKOFCFmcYMq818"
 #endif /* CURRENT_PACKAGE_KEY */
 #ifndef CURRENT_COMPONENT_ID
-#define CURRENT_COMPONENT_ID "github-get-0.1.0.0-JD5zNHvgm374e0TcdPit6f"
+#define CURRENT_COMPONENT_ID "github-get-0.1.0.0-5jIyNqiBsKOFCFmcYMq818"
 #endif /* CURRENT_COMPONENT_ID */
 #ifndef CURRENT_PACKAGE_VERSION
 #define CURRENT_PACKAGE_VERSION "0.1.0.0"
