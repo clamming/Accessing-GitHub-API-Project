@@ -33,13 +33,13 @@ someFunc = do
 testGitHubCall :: Text -> IO ()
 testGitHubCall name = 
    (SC.runClientM (GH.getUser (Just "haskell-app") name) =<< env) >>= \case
-
+    -- first, we get the user
     Left err -> do
       putStrLn $ "Error (getting user): " ++ show err
     Right res -> do
       putStrLn $ "User: " ++ show res
 
-         -- now lets get the users repositories
+         -- secondly, we get the users repositories
       (SC.runClientM (GH.getUserRepos (Just "haskell-app") name) =<< env) >>= \case
         Left err -> do
           putStrLn $ "Error (getting repos): " ++ show err
