@@ -3,7 +3,7 @@
 ? /Users/cressylamming/Documents/GitHub/Accessing-GitHub-API-Project/.stack-work/dist/x86_64-osx/Cabal-3.0.1.0/build/autogen/Paths_github_get.hs
 : hash: 4adacdfc7a19db7cc6b91bdc047f6fdfbee172d9bc775e81cbb4ba1ec1316caa
 /Users/cressylamming/Documents/GitHub/Accessing-GitHub-API-Project/src/GitHub.hs:
-  hash: c8af5d47d8a82d6fd11bafdd95e7258f8be4c5f9b1c87c59eac78b850a0a9665
+  hash: da358e07a46aa8a2363df80f9d63a69cb8918529352f07fd478c1b6a24085b61
 /Users/cressylamming/Documents/GitHub/Accessing-GitHub-API-Project/ChangeLog.md:
   hash: 605e0698ec75a01eb19202da76849fa16450fc0c3098529d117e7bf61ffb62fa
 /Users/cressylamming/.stack/programs/x86_64-osx/ghc-8.8.4/lib/ghc-8.8.4/include/ghcversion.h:
@@ -15,4 +15,4 @@
 ? /Users/cressylamming/Documents/GitHub/Accessing-GitHub-API-Project/.stack-work/dist/x86_64-osx/Cabal-3.0.1.0/build/autogen/cabal_macros.h
 : hash: 0e096927e6847b06f3c2692dc4162c5af4dc8ebfda77c28f18d4632699a462ec
 /Users/cressylamming/Documents/GitHub/Accessing-GitHub-API-Project/src/Lib.hs:
-  hash: a7cfa194b2453882a0b01287b728a4275a2abf6c931876f0d423d909c7e4ca62
+  hash: 22910066c2d4aec0a2eb9fcd43b9904e93ed7a236ec20bbaad13ec2315eece16
