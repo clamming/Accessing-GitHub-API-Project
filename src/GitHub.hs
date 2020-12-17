@@ -20,18 +20,21 @@ type Username = Text
 type UserAgent = Text
 type Reponame = Text
 
+-- user data types sourced from GitHub user documentation at https://docs.github.com/en/free-pro-team@latest/rest/reference/users
 data GitHubUser =
   GitHubUser { login :: Text
               , followers :: Integer
               , following :: Integer
              } deriving (Generic, FromJSON, Show)
 
+-- data types for the repo are sourced from GitHub documentation at https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-public-repositories 
 data GitHubRepo =
    GitHubRepo { name :: Text
-              , id :: Maybe Integer
+              , visibility :: Maybe Text
               , language :: Maybe Text
               } deriving (Generic, FromJSON, Show)
 
+-- data types for the repo languages are sourced from https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-repository-languages
 data RepoLanguages =
    RepoLanguages   { java :: Maybe Integer
                    , python :: Maybe Integer

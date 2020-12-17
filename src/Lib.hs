@@ -12,7 +12,7 @@
 {-# LANGUAGE DuplicateRecordFields     #-}
 
 module Lib
-    ( someFunc
+    ( action
     ) where
 
 import qualified GitHub as GH
@@ -23,8 +23,8 @@ import           Network.HTTP.Client.TLS      (tlsManagerSettings)
 import Data.Text hiding (map,intercalate)
 import Data.List (intercalate)
 
-someFunc :: IO ()
-someFunc = do
+action :: IO ()
+action = do
   putStrLn "GitHub Call"
   testGitHubCall "clamming"
   putStrLn "finish."
@@ -44,9 +44,11 @@ testGitHubCall name =
         Left err -> do
           putStrLn $ "Error (getting repos): " ++ show err
         Right res' -> do
-          putStrLn $ "Repositories: " ++
-            intercalate ", " (map (\(GH.GitHubRepo n _ _ ) -> unpack n) res')
-      
+          putStrLn $ "Repositories: \n" ++
+            intercalate ", \n" (map (\(GH.GitHubRepo n _ _ ) -> unpack n) res')
+
+                
+                 
 
   where env :: IO SC.ClientEnv
         env = do
