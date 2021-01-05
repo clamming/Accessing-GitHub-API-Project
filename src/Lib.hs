@@ -19,46 +19,48 @@ import qualified GitHub as GH
 import qualified Servant.Client               as SC
 import           Network.HTTP.Client          (newManager)
 import           Network.HTTP.Client.TLS      (tlsManagerSettings)
-
+import           System.Environment           (getArgs)
 import Data.Text hiding (map,intercalate, groupBy, concat)
 import Data.List (intercalate, groupBy, sortBy)
 import Data.Either
 
 action :: IO ()
 action = do
-  putStrLn "GitHub Call"
-  testGitHubCall "esjmb"
-  putStrLn "finish."
+  putStrLn "Let's try a GitHubCall"
+  (rName:_) <- getArgs
+  putStrLn $ "name is " ++ rName
 
+  testGitHubCall $ pack rName
+  putStrLn "end."
 
 testGitHubCall :: Text -> IO ()
 testGitHubCall name = 
    (SC.runClientM (GH.getUser (Just "haskell-app") name) =<< env) >>= \case
     -- first, we get the user
-    Left err -> do
-      putStrLn $ "Error (getting user): " ++ show err
-    Right res -> do
-      putStrLn $ "User: " ++ show res
-
-         -- secondly, we get the users repositories
-      (SC.runClientM (GH.getUserRepos (Just "haskell-app") name) =<< env) >>= \case
         Left err -> do
-          putStrLn $ "Error (getting repos): " ++ show err
-        Right repos -> do
-          putStrLn $ " repositories are:" ++
-            intercalate ", \n " (map (\(GH.GitHubRepo n _ _ ) -> unpack n) repos)
+          putStrLn $ "Error (getting user): " ++ show err
+        Right res -> do
+          putStrLn $ "User: " ++ show res
 
-          -- now lets get the full list of collaborators from repositories
-          partitionEithers <$> mapM (getContribs name) repos >>= \case
+             -- secondly, we get the users repositories
+          (SC.runClientM (GH.getUserRepos (Just "haskell-app") name) =<< env) >>= \case
+            Left err -> do
+              putStrLn $ "Error (getting repos): " ++ show err
+            Right repos -> do
+              putStrLn $ " repositories are:" ++
+                intercalate ", \n " (map (\(GH.GitHubRepo n _ _ ) -> unpack n) repos)
 
-            ([], contribs) ->
-              putStrLn $ " contributors are: " ++
-              (intercalate "\n\t" .
-               map (\(GH.RepoContributor n c) -> "[" ++ show n ++ "," ++ show c ++ "]") .
-               groupContributors $ concat contribs)
+              -- now lets get the full list of collaborators from repositories
+              partitionEithers <$> mapM (getContribs name) repos >>= \case
 
-            (ers, _)-> do
-              putStrLn $ "heuston, we have a problem (getting contributors): " ++ show ers
+                ([], contribs) ->
+                  putStrLn $ " contributors are: " ++
+                  (intercalate "\n\t" .
+                   map (\(GH.RepoContributor n c) -> "[" ++ show n ++ "," ++ show c ++ "]") .
+                   groupContributors $ concat contribs)
+
+                (ers, _)-> do
+                  putStrLn $ "heuston, we have a problem (getting contributors): " ++ show ers
 
                 
                  
