@@ -35,25 +35,34 @@ data GitHubRepo =
               } deriving (Generic, FromJSON, Show)
 
 -- data types for the repo languages are sourced from https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-repository-languages
-data RepoLanguages =
-   RepoLanguages   { java :: Maybe Integer
-                   , python :: Maybe Integer
-                   , haskell :: Maybe Integer
-                   } deriving (Generic, FromJSON, Show)
+-- data RepoLanguages =
+ --  RepoLanguages   { java :: Maybe Integer
+   --                , python :: Maybe Integer
+     --              , haskell :: Maybe Integer
+       --            } deriving (Generic, FromJSON, Show)
+
+data RepoContributor =
+  RepoContributor { login :: Text
+                  , contributions :: Integer
+                  } deriving (Generic, FromJSON, Show)
 
 type GitHubAPI = "users" :> Header "user-agent" UserAgent 
                          :> Capture "username" Username  :> Get '[JSON] GitHubUser
             :<|> "users" :> Header "user-agent" UserAgent 
                           :> Capture "username" Username  :> "repos" :>  Get '[JSON] [GitHubRepo]
+          --  :<|> "repos" :> Header  "user-agent" UserAgent 
+            --              :> Capture "username" Username  
+              --            :> Capture "repo"     Reponame  :> "Languages" :>  Get '[JSON] [RepoLanguages]
             :<|> "repos" :> Header  "user-agent" UserAgent 
-                          :> Capture "username" Username  
-                          :> Capture "repo"     Reponame  :> "Languages" :>  Get '[JSON] [RepoLanguages]
+                         :> Capture "username" Username  
+                         :> Capture "repo"     Reponame  :> "contributors" :>  Get '[JSON] [RepoContributor]
 
 gitHubAPI :: Proxy GitHubAPI
 gitHubAPI = Proxy
 
 getUser :: Maybe UserAgent -> Username -> ClientM GitHubUser
 getUserRepos :: Maybe UserAgent -> Username -> ClientM [GitHubRepo]
-getRepoLanguages :: Maybe UserAgent -> Username -> Reponame -> ClientM [RepoLanguages]
+-- getRepoLanguages :: Maybe UserAgent -> Username -> Reponame -> ClientM [RepoLanguages]
+getRepoContribs :: Maybe UserAgent -> Username -> Reponame -> ClientM [RepoContributor]
 
-getUser :<|> getUserRepos :<|> getRepoLanguages = client gitHubAPI
+getUser :<|> getUserRepos :<|> getRepoContribs = client gitHubAPI
